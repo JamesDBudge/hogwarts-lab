@@ -20,9 +20,14 @@
     <option value="3"<%= "selected" if @student.house.name == "ravenclaw"%>>Ravenclaw</option>
     <option value="4"<%= "selected" if @student.house.name == "slytherin"%>>Slytherin</option>
   </select> -->
-  <select name="house_id" id="house-select">
+  <select name="house_id" id="house-select" selected="<%= @student.house_id  %>">
     <% @houses.each do |house| %>
-    <option value="<%= house.id %>"><%= house.name %></option>
+    <% if house.id == @student.house_id %>
+            <option value=<%= house.id %> selected><%= house.name.capitalize %></option>
+          <% else %>
+            <option value=<%= house.id %>><%= house.name.capitalize %></option>
+          <% end %>
+<!--    <option value="<%= house.id %>"><%= house.name %></option> -->
     <% end %>
   </select>
 
